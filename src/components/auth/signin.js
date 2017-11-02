@@ -6,6 +6,7 @@ import router from '../../router'
 const state = {
 	email: '',
 	password: '',
+	loading: false,
 	logged: JSON.parse(localStorage.getItem(consts.consts.loginUser))
 
 }
@@ -14,9 +15,14 @@ const mutations = {
 	LOGIN(state, data){
 		localStorage.setItem(consts.consts.loginUser, JSON.stringify(data.data))
 		state.logged = data.data
-
+		state.loading = false,
 		router.push('/')	
+		
 
+	},
+
+	LOADING(state, data){
+		state.loading = data
 	},
 
 	LOGOUT(state){

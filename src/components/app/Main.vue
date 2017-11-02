@@ -7,7 +7,7 @@
 		  <q-tab alert slot="title" name="tab-2" icon="map">Mapa</q-tab>
 		  <!-- Targets -->
 		  <q-tab-pane name="tab-1"><list-parking :parkings="parkings"/> </q-tab-pane>
-		  <q-tab-pane name="tab-2">tab2</q-tab-pane>
+		  <q-tab-pane class ="map-container" name="tab-2"><map-parking :parkings="parkings"/></q-tab-pane>
 		</q-tabs>
   </div>
 </template>
@@ -18,12 +18,14 @@ import {
 	QContextMenu,
 	QList,
 	QItem,
+	QItemSide,
 	QItemMain,
 	QTab,
 	QTabPane,
 	QTabs
 } from 'quasar'
 import ListParking from './parking/list/ListParking.vue'
+import MapParking from './parking/map/MapParking.vue'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
@@ -36,11 +38,13 @@ export default {
 		QContextMenu,
 		QList,
 		QItem,
+		QItemSide,
 		QItemMain,
 		QTab,
 		QTabPane,
 		QTabs,
-		ListParking
+		ListParking,
+		MapParking
 	},
   data () {
     return {}
@@ -58,5 +62,18 @@ export default {
 }
 </script>
 
-<style>
+<style lang="stylus">
+.map-container 
+  width 100%
+  height 60%
+
+
+  
+.google-map 
+  position relative
+  width 100%
+  height 400px
+  margin 0 auto
+  background gray
+
 </style>

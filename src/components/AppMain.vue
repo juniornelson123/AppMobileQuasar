@@ -70,7 +70,7 @@
           <q-item-main label="Gitter Channel" sublabel="Quasar Lobby" />
         </q-item>
         <q-item @click="logout">
-          <q-item-side icon="exit" />
+          <q-item-side icon="exit_to_app" />
           <q-item-main label="Sair" sublabel="efetuar logout" />
         </q-item>
       </q-list>
@@ -89,6 +89,7 @@ import {
   QListHeader,
   QContextMenu,
   QItem,
+  QItemSide,
   QItemMain,
   QLayout,
   QBtn,
@@ -105,6 +106,7 @@ export default {
     QContextMenu,
     QList,
     QItem,
+    QItemSide,
     QItemMain,
     QLayout,
     QBtn,

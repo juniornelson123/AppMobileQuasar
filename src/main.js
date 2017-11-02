@@ -13,6 +13,7 @@ require(`quasar/dist/quasar.${__THEME}.css`)
 import Vue from 'vue'
 import Quasar from 'quasar'
 import router from './router'
+import * as VueGoogleMaps from 'vue2-google-maps'
 
 Vue.config.productionTip = false
 Vue.use(Quasar) // Install Quasar Framework
@@ -20,6 +21,19 @@ Vue.use(Quasar) // Install Quasar Framework
 if (__THEME === 'mat') {
   require('quasar-extras/roboto-font')
 }
+
+Vue.use(VueGoogleMaps, {
+  load: {
+
+    key: 'AIzaSyAAZnaZBXLqNBRXjd-82km_NO7GUItyKek',
+    libraries: 'places', // This is required if you use the Autocomplete plugin
+    // OR: libraries: 'places,drawing'
+    // OR: libraries: 'places,drawing,visualization'
+    // (as you require)
+  }
+})
+
+
 import 'quasar-extras/material-icons'
 // import 'quasar-extras/ionicons'
 // import 'quasar-extras/fontawesome'

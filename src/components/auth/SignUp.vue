@@ -6,7 +6,7 @@
   	  	<q-input v-model="name" placeholder="Nome"/>
 			</div>
 			<div class="col-10">
-  	  	<q-input v-model="phone" type="phone" placeholder="Telefone"/>
+  	  	<q-input v-model="phone"placeholder="Telefone"/>
 			</div>
 			<div class="col-10">
   	  	<q-input v-model="email" type="email" placeholder="Email"/>
@@ -28,23 +28,31 @@
     		
 			</div>
     </div>
-     
+    
+    <q-inner-loading :visible="loading()">
+      <q-spinner-mat size="50px" color="primary"></q-spinner-mat>
+    </q-inner-loading>
+  
   </div>
 
 </template>
 
 <script>
 import {
+  QInnerLoading,
+  QSpinnerMat,
+  QInput,
 	QSideLink,
-	QInput,
 	QBtn
 } from 'quasar'
 
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
  	components: {
-		QInput,
+		QInnerLoading,
+    QSpinnerMat,
+    QInput,
  		QSideLink,
 		QBtn
  	},
@@ -57,11 +65,18 @@ export default {
     }
   },
   methods: {
+    ...mapGetters([
+      'loading'
+    ]),
+
     ...mapActions([
+      'startLoading',
       'register'
     ]),
 
     registerUser: function(){
+
+      this.startLoading()
       this.register({ name: this.name, phone: this.phone, email: this.email, password: this.password})
     }
   }

@@ -4,6 +4,10 @@ export default {
 		return state.logged
 	},
 
+	loading: (state) => {
+		return state.loading
+	},
+
 	email: (state) => {
 		return state.email
 	},

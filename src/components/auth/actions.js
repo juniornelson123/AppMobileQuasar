@@ -1,6 +1,7 @@
 import axios from 'axios'
 import consts from '../../consts'
 import router from '../../router'
+import { Toast } from 'quasar'
 
 export default {
 	login: function({ dispatch, commit }, values){
@@ -8,6 +9,12 @@ export default {
 			commit('LOGIN', user)
 		}, (error) => {
 			console.log(error)
+			commit('LOADING', false)
+			Toast.create({
+        html: 'Erro ao efetuar login',
+        color: 'white',
+        bgColor: 'red'
+      })
 		})
 	},
 
@@ -16,8 +23,18 @@ export default {
 			commit('LOGIN', user)
 		}, (error) => {
 			console.log(error)
+			commit('LOADING', false)
+			Toast.create({
+        html: 'Erro ao efetuar cadastro',
+        color: 'white',
+        bgColor: 'red'
+      })
 			
 		})
+	},
+
+	startLoading: ({dispatch, commit}) => {
+		commit('LOADING', true)
 	},
 
 	logout: function({ dispatch, commit }){

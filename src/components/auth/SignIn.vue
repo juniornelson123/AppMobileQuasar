@@ -22,21 +22,29 @@
 	    	</q-btn>
 			</div>
 		</div>
-      
+    
+    <q-inner-loading :visible="loading()">
+      <q-spinner-mat size="50px" color="primary"></q-spinner-mat>
+    </q-inner-loading>
+
   </div>
 
 </template>
 
 <script>
 import { 
+	QInnerLoading,
+	QSpinnerMat,
 	QSideLink,
 	QInput,
 	QBtn
 } from 'quasar'
 
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
 	components: {
+		QInnerLoading,
+		QSpinnerMat,
 		QInput,
 		QSideLink,
 		QBtn
@@ -48,11 +56,19 @@ export default {
     }
   },
   methods: {
-    ...mapActions([
-      'login'
+
+    ...mapGetters([
+      'loading'
     ]),
 
+    ...mapActions([
+      'login',
+      'startLoading'
+    ]),
+    
+    
     signIn: function(){
+    	this.startLoading()
       this.login({email: this.email, password: this.password})
     }
   }
