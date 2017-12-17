@@ -40,6 +40,11 @@ export default new VueRouter({
         path: 'index',
         name: 'index',
         component: load('app/Main')
+      },
+      {
+        path: 'detail/:idParking',
+        name: 'detail',
+        component: load('app/parking/details/DetailParking')
       }
     ]
   },

@@ -4,9 +4,9 @@
     ref="layout"
     >
     <q-toolbar slot="header">
-      <q-btn class="hide-on-drawer-visible" @click="$refs.layout.toggleLeft()">
+    <!--   <q-btn class="hide-on-drawer-visible" @click="$refs.layout.toggleLeft()">
         <q-icon name="menu"/>
-      </q-btn>
+      </q-btn> -->
      
       <q-toolbar-title>
         Estaciona Facil
@@ -54,26 +54,21 @@
         instead of <q-item> for
         internal vue-router navigation
       -->
-
+<!-- 
       <q-list no-border link inset-delimiter>
         <q-list-header>Estaciona Facil</q-list-header>
-        <q-item @click="launch('http://quasar-framework.org')">
-          <q-item-side icon="school" />
-          <q-item-main label="Docs" sublabel="quasar-framework.org" />
-        </q-item>
-        <q-item @click="launch('http://forum.quasar-framework.org')">
-          <q-item-side icon="record_voice_over" />
-          <q-item-main label="Forum" sublabel="forum.quasar-framework.org" />
-        </q-item>
-        <q-item @click="launch('https://gitter.im/quasarframework/Lobby')">
-          <q-item-side icon="chat" />
-          <q-item-main label="Gitter Channel" sublabel="Quasar Lobby" />
-        </q-item>
+        <router-link :to="{ name: 'index'}">
+          <q-item>
+            <q-item-side icon="school" />
+            <q-item-main label="Inicio" />
+          </q-item>
+        </router-link>  
+
         <q-item @click="logout">
           <q-item-side icon="exit_to_app" />
           <q-item-main label="Sair" sublabel="efetuar logout" />
         </q-item>
-      </q-list>
+      </q-list> -->
     </div>
     <!-- Footer
     <q-toolbar slot="footer">

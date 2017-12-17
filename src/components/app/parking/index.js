@@ -4,8 +4,9 @@ import actions from './actions'
 import router from '../../../router'
 
 const state = {
-	parkings: JSON.parse(localStorage.getItem(consts.consts.parking)) || []
-
+	parkings: JSON.parse(localStorage.getItem(consts.consts.parking)) || [],
+	parking: {}
+	
 }
 
 const mutations = {
@@ -13,7 +14,14 @@ const mutations = {
 		localStorage.setItem(consts.consts.parking, JSON.stringify(data.data))
 		state.parkings = data.data	
 
+	},
+
+	GETPARKING(state, data) {
+		console.log(data.data)
+		state.parking = data.data
 	}
+
+
 }
 
 export default { state, mutations, getters, actions }

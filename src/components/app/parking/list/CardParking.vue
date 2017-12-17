@@ -8,6 +8,7 @@
 		</q-card-title>
 		<q-card-main>
 		  <p class="text-faded">{{description}}</p>
+		  <p class="text-faded">{{disp}} vagas disponiveis</p>
 		</q-card-main>
 		<q-card-separator />
 		<q-card-actions>
@@ -15,7 +16,14 @@
 		  <div v-for="p in prices">	
 			  <q-btn flat>{{p.value}}</q-btn>
 		  </div>
-		  <q-btn flat color="primary">Detalhes</q-btn>
+		  <div v-if="!detail">
+		  	<router-link :to="{ name: 'detail', params: { idParking: id }}"><q-btn flat color="primary">Solicitar Vaga</q-btn></router-link>
+		  </div>
+		  <div v-if="detail">
+		  	<router-link :to="{ name: 'detail', params: { idParking: id }}"><q-btn flat color="primary">Detalhes</q-btn></router-link>
+		  </div>
+
+		  <!-- <q-btn flat color="primary">Detalhes</q-btn> -->
 		</q-card-actions>
 	</q-card>
 </template>
@@ -44,7 +52,7 @@ export default {
 	QCardSeparator,
 	QCardActions
 	},
-	props: ['title','description', 'prices', 'link', 'image'],
+	props: ['id', 'detail', 'disp', 'title','description', 'prices', 'link', 'image'],
   data () {
     return {}
   }
