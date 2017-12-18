@@ -4,9 +4,9 @@
     ref="layout"
     >
     <q-toolbar slot="header">
-    <!--   <q-btn class="hide-on-drawer-visible" @click="$refs.layout.toggleLeft()">
+      <q-btn class="hide-on-drawer-visible" @click="$refs.layout.toggleLeft()">
         <q-icon name="menu"/>
-      </q-btn> -->
+      </q-btn>
      
       <q-toolbar-title>
         Estaciona Facil
@@ -54,21 +54,23 @@
         instead of <q-item> for
         internal vue-router navigation
       -->
-<!-- 
+
       <q-list no-border link inset-delimiter>
         <q-list-header>Estaciona Facil</q-list-header>
-        <router-link :to="{ name: 'index'}">
-          <q-item>
-            <q-item-side icon="school" />
-            <q-item-main label="Inicio" />
-          </q-item>
-        </router-link>  
-
+        <q-item @click="sendHome">
+          <q-item-side icon="school" />
+          <q-item-main label="Inicio" />
+        </q-item>
+        <q-item @click="sendVagance">
+          <q-item-side icon="local_parking" />
+          <q-item-main label="Vagas" />
+        </q-item>
+      
         <q-item @click="logout">
           <q-item-side icon="exit_to_app" />
           <q-item-main label="Sair" sublabel="efetuar logout" />
         </q-item>
-      </q-list> -->
+      </q-list>
     </div>
     <!-- Footer
     <q-toolbar slot="footer">
@@ -115,7 +117,21 @@ export default {
   methods: {
     ...mapActions([
       'logout'
-    ])
+    ]),
+
+    sendHome(){
+      this.$refs.layout.toggleLeft()
+      this.$router.push('/index')
+      // console.log(this.$router)
+      // this.$router.redirect('/');
+    },
+
+    sendVagance(){
+      this.$refs.layout.toggleLeft()
+      this.$router.push('/vagances')
+      // console.log(this.$router)
+      // this.$router.redirect('/');
+    }
   }
 }
 </script>

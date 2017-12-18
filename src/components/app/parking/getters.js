@@ -9,4 +9,7 @@ export default {
 	reserves: (state) => {
 		return state.reserves.array
 	},
+	permited: (state) => {
+		return state.permited
+	},
 }

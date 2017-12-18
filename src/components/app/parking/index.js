@@ -7,7 +7,7 @@ const state = {
 	parkings: JSON.parse(localStorage.getItem(consts.consts.parking)) || [],
 	parking: {},
 	reserves: {},
-	
+	permited: false,	
 }
 
 const mutations = {
@@ -21,7 +21,10 @@ const mutations = {
 		console.log(data.data)
 		state.parking = data.data
 	},
-
+	PERMITEDVAGANCE(state, data) {
+		console.log(data.data)
+		state.permited = data.data.permited
+	},
 	GETRESERVEVAGANCES(state, data) {
 		console.log(data.data)
 		state.reserves = data.data

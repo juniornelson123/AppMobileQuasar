@@ -2,8 +2,8 @@
 	<div>
 		<q-pull-to-refresh :handler="refresher" :pull-message="'Recarregar'"  :refresh-message="'Recarregando'">
 	  <!-- Content, whatever you like -->
-		<div class="row">
-			<div v-for="vagance in reserves" style="width:50%;">
+		<div class="row" style="display: flex; justify-content: center;">
+			<div v-for="vagance in reserves" style="width:45%;margin-right: 5px;">
 				<div v-if="vagance.status == 'pending'" class="row"> 
 					<q-card inline style="width: 100%;background-color: #ffff00;">
 						<q-card-title>
@@ -27,7 +27,7 @@
 							<p class="" style="color: #fff;">{{vagance.parking.name}}</p>
 						</q-card-main>
 						<q-card-actions>
-							<p style="color: #fff;">Detalhes</p>
+							<router-link :to="{ name: 'detail', params: { idParking: vagance.parking.id }}"><q-btn flat color="primary">Detalhes</q-btn></router-link>
 						</q-card-actions>
 					</q-card>
 				</div>
@@ -40,7 +40,7 @@
 							<p class="" style="color: #fff;">{{vagance.parking.name}}</p>
 						</q-card-main>
 						<q-card-actions>
-							<p style="color: #fff;">Detalhes</p>
+							<router-link :to="{ name: 'detail', params: { idParking: vagance.parking.id }}"><q-btn flat color="primary">Detalhes</q-btn></router-link>
 						</q-card-actions>
 						
 					</q-card>
