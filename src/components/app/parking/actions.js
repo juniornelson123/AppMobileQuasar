@@ -12,7 +12,25 @@ export default {
 		})
 
 	},
+	saveReserveVagance({dispatch, commit, state}, data){
+		axios.post(consts.consts.apiHost+"/api/reserve_vagances.json",{parking_id: data, vagance_id: data, user_id: JSON.parse(localStorage.getItem(consts.consts.loginUser)).id}, {headers: {'access-token': JSON.parse(localStorage.getItem(consts.consts.loginUser)).token}}).then(vagances => {
+			console.log(data)
+			dispatch('getReserveVagances')
+			
+		}).catch(error => {
+			console.log(error)
+		})		
+	},
 
+	getReserveVagances({dispatch, commit, state}){
+		var data = JSON.parse(localStorage.getItem(consts.consts.loginUser)).id
+		axios.get(consts.consts.apiHost+"/api/reserve_vagances/"+data+".json", {headers: {'access-token': JSON.parse(localStorage.getItem(consts.consts.loginUser)).token}}).then(vagances => {
+			console.log(vagances)
+			commit('GETRESERVEVAGANCES', vagances)
+		}).catch(error => {
+			console.log(error)
+		})
+	},	
 	getParking({dispatch, commit, state}, data){
 		commit('GETPARKING', data)
 		console.log(data)

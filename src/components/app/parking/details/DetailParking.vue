@@ -3,7 +3,7 @@
 	<div>
 		
 		<div v-if="parking.id">
-			<card-parking :title="parking.name" :description="parking.description" :prices="parking.prices" :disp ='parking.vagances_disp
+			<card-parking :title="parking.name" :id="parking.id" :description="parking.description" :prices="parking.prices" :disp ='parking.vagances_disp
 ' :image="parking.image ? parking.image : 'http://www.vagabarata.com.br/blog/wp-content/uploads/2014/06/Texto-6-escolha-o-melhor-estacionamento-pr%C3%B3ximo-ao.jpg'" :detail='false'/>
 			<q-card inline style="width: 95%;">
 				<q-card-title>

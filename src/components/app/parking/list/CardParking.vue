@@ -14,10 +14,11 @@
 		<q-card-actions>
 		  <q-btn flat round small><q-icon name="event" /></q-btn>
 		  <div v-for="p in prices">	
+			  <q-btn flat>{{p.hour}}</q-btn>
 			  <q-btn flat>{{p.value}}</q-btn>
 		  </div>
 		  <div v-if="!detail">
-		  	<router-link :to="{ name: 'detail', params: { idParking: id }}"><q-btn flat color="primary">Solicitar Vaga</q-btn></router-link>
+		  	<q-btn flat color="primary" @click='saveReserveVagance(id)'>Solicitar Vaga</q-btn>
 		  </div>
 		  <div v-if="detail">
 		  	<router-link :to="{ name: 'detail', params: { idParking: id }}"><q-btn flat color="primary">Detalhes</q-btn></router-link>
@@ -39,8 +40,14 @@ import {
 	QCardSeparator,
 	QCardActions
 } from 'quasar'
-
+import {mapActions, mapGetters} from 'vuex'
 export default {
+	computed: {
+		 idParking(){
+		 	return this.id 
+
+		 } 
+	},
 	components: {
 
 	QIcon,
@@ -54,7 +61,22 @@ export default {
 	},
 	props: ['id', 'detail', 'disp', 'title','description', 'prices', 'link', 'image'],
   data () {
-    return {}
+    return {
+  
+    }
+  },
+  created(){
+  	console.log(this.idParking)
+  },
+  methods: {
+  	...mapActions([
+  		'saveReserveVagance'
+  	]),
+  	
+  	reserveVagance(){
+  		// console.log(idParking)
+  		this.saveReserveVagance(this.id)
+  	}
   }
 }
 </script>

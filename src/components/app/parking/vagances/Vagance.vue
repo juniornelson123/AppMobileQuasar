@@ -1,0 +1,131 @@
+<template>
+	<div>
+		<q-pull-to-refresh :handler="refresher" :pull-message="'Recarregar'"  :refresh-message="'Recarregando'">
+	  <!-- Content, whatever you like -->
+		<div class="row">
+			<div v-for="vagance in reserves" style="width:50%;">
+				<div v-if="vagance.status == 'pending'" class="row"> 
+					<q-card inline style="width: 100%;background-color: #ffff00;">
+						<q-card-title>
+						</q-card-title>
+						<q-card-main>
+							<p class="" style="color: #fff;">Solicitação de Reserva</p>
+							<p class="" style="color: #fff;">{{vagance.parking.name}}</p>
+						</q-card-main>
+						<q-card-actions>
+							<router-link :to="{ name: 'detail', params: { idParking: vagance.parking.id }}"><q-btn flat color="primary">Detalhes</q-btn></router-link>
+						</q-card-actions>
+						
+					</q-card>
+				</div>
+				<div v-if="vagance.status == 'accept'">
+					<q-card inline style="width: 100%;background-color: #00ff00;">
+						<q-card-title>
+						</q-card-title>
+						<q-card-main>
+							<p class="" style="color: #fff;">Solicitação Aceita</p>
+							<p class="" style="color: #fff;">{{vagance.parking.name}}</p>
+						</q-card-main>
+						<q-card-actions>
+							<p style="color: #fff;">Detalhes</p>
+						</q-card-actions>
+					</q-card>
+				</div>
+				<div v-if="vagance.status == 'deny' || vagance.status == 'finish'">
+					<q-card inline style="width: 100%;background-color: #ff0000;">
+						<q-card-title>
+						</q-card-title>
+						<q-card-main>
+							<p class="" style="color: #fff;">Solicitação Finalizada</p>
+							<p class="" style="color: #fff;">{{vagance.parking.name}}</p>
+						</q-card-main>
+						<q-card-actions>
+							<p style="color: #fff;">Detalhes</p>
+						</q-card-actions>
+						
+					</q-card>
+				</div>		
+
+			</div>
+		</div>
+	  </q-pull-to-refresh>
+	</div>
+</template>
+
+<script>
+	import {
+		QInput,
+		QSideLink,
+		QModal,
+		QPullToRefresh,
+		QLayout,
+		QBtn,
+	  QToolbar,
+	  QToolbarTitle,
+	  QCard,
+		QCardTitle,
+		QCardMain,
+		QCardSeparator,
+		QCardActions
+	} from 'quasar'
+	import { mapActions, mapGetters } from 'vuex'
+export default {
+	computed: {
+		...mapGetters([
+			'reserves',
+		])
+	},
+
+	components: {
+		QInput,
+		QSideLink,
+		QModal,
+		QPullToRefresh,
+		QLayout,
+		QBtn,
+	  QToolbar,
+	  QToolbarTitle,
+		QCard,
+		QCardTitle,
+		QCardMain,
+		QCardSeparator,
+		QCardActions
+	},
+
+	data() {
+		return {
+			number_vagance: 0
+		}
+	},
+
+	created(){
+		this.getReserveVagances()
+	},
+
+	methods: {
+		...mapActions([
+			'getReserveVagances',
+			'saveReserveVagances'
+		]),
+		refresher (done) {
+			done()
+			this.getReserveVagances()
+			
+    }
+	}
+}
+</script>
+
+<style>
+	.row {
+		display: flex;
+	},
+
+	.actions {
+		display: flex;
+    margin-top: 20px;
+    justify-content: center;
+	}
+
+
+</style>

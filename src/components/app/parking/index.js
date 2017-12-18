@@ -5,7 +5,8 @@ import router from '../../../router'
 
 const state = {
 	parkings: JSON.parse(localStorage.getItem(consts.consts.parking)) || [],
-	parking: {}
+	parking: {},
+	reserves: {},
 	
 }
 
@@ -19,6 +20,11 @@ const mutations = {
 	GETPARKING(state, data) {
 		console.log(data.data)
 		state.parking = data.data
+	},
+
+	GETRESERVEVAGANCES(state, data) {
+		console.log(data.data)
+		state.reserves = data.data
 	}
 
 

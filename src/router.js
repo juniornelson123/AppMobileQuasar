@@ -45,6 +45,11 @@ export default new VueRouter({
         path: 'detail/:idParking',
         name: 'detail',
         component: load('app/parking/details/DetailParking')
+      },
+      {
+        path: 'vagances',
+        name: 'vagances',
+        component: load('app/parking/vagances/Vagance')
       }
     ]
   },

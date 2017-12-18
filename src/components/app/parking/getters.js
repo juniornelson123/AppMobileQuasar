@@ -5,5 +5,8 @@ export default {
 
 	parking: (state) => {
 		return state.parking
-	}
+	},
+	reserves: (state) => {
+		return state.reserves.array
+	},
 }
