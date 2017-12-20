@@ -38,9 +38,9 @@ export default {
       markers: [],
       dragLat: 0,
       dragLng: 0,
+      id: 0,
       infoName: '',
       infoVagance: '',
-      id: 0,
       infoWindowPos: {
         lat: 0,
         lng: 0

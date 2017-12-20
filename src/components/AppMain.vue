@@ -95,6 +95,7 @@ import {
   QToolbarTitle
 } from 'quasar'
 
+import App from '../cable'
 import { mapActions } from 'vuex'
 export default {
   components: {
@@ -113,6 +114,9 @@ export default {
   },
   data () {
     return {}
+  },
+  created(){
+    
   },
   methods: {
     ...mapActions([

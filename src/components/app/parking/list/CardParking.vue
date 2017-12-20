@@ -69,7 +69,7 @@ export default {
     }
   },
   created(){
-  	this.permitedVagance()
+  	this.permitedVagance(this.id)
   },
   methods: {
   	...mapActions([

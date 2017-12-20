@@ -52,10 +52,12 @@ export default {
   methods:{
   	...mapActions([
       'getParkings',
+      'sendMessage'
 		])
 
   },
   created: function(){
+  	this.sendMessage()
 		this.getParkings()
 	}
 
