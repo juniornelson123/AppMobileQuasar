@@ -1,20 +1,21 @@
 <template>
   <div>
-  	
-	  <q-tabs>
-	  	<!-- Tabs - notice slot="title" -->
-		  <q-tab default slot="title" name="tab-1" icon="list" >Lista</q-tab>
-		  <q-tab alert slot="title" name="tab-2" icon="map">Mapa</q-tab>
-		  <!-- Targets -->
-		  <q-tab-pane name="tab-1"><list-parking :parkings="parkings"/> </q-tab-pane>
-		  <q-tab-pane class ="map-container" name="tab-2"><map-parking :parkings="parkings"/></q-tab-pane>
-		</q-tabs>
+  	  <q-tabs>
+		  	<!-- Tabs - notice slot="title" -->
+			  <q-tab default slot="title" name="tab-1" icon="list" >Lista</q-tab>
+			  <q-tab alert slot="title" name="tab-2" icon="map">Mapa</q-tab>
+			  <!-- Targets -->
+			  <q-tab-pane name="tab-1"><list-parking :parkings="parkings"/> </q-tab-pane>
+			  <q-tab-pane class ="map-container" name="tab-2"><map-parking :parkings="parkings"/></q-tab-pane>
+			</q-tabs>
+		
   </div>
 </template>
 
 <script>
 
 import { 
+	QPullToResfresh,
 	QContextMenu,
 	QList,
 	QItem,
@@ -35,6 +36,7 @@ export default {
 		])
 	},
 	components: {
+		QPullToResfresh,
 		QContextMenu,
 		QList,
 		QItem,
@@ -50,6 +52,9 @@ export default {
     return {}
   },
   methods:{
+  	refresher(){
+  		this.getParkings()
+  	},
   	...mapActions([
       'getParkings',
       'sendMessage'
@@ -57,7 +62,7 @@ export default {
 
   },
   created: function(){
-  	this.sendMessage()
+  	// this.sendMessage()
 		this.getParkings()
 	}
 

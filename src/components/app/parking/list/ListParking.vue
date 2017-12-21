@@ -9,16 +9,28 @@
     </div>
     <div class="title-center" v-else>
       <span style="font-size: 24px;">Sem Estacionamentos Cadastrados</span>
-    </div>  
+    </div>
+  
   </div>
 </template>
 
 <script>
-
+import { 
+  QPullToResfresh,
+  QContextMenu,
+  QList,
+  QItem,
+  QItemSide,
+  QItemMain,
+  QTab,
+  QTabPane,
+  QTabs
+} from 'quasar'
 import CardParking from './CardParking.vue'
-
+import { mapGetters, mapActions } from 'vuex'
 export default {
   components: {
+    QPullToResfresh,
   	CardParking
   },
   props: ['parkings'],
@@ -26,7 +38,17 @@ export default {
     return {
     	
     }
-  }
+  },
+  methods:{
+    refresher(){
+      this.getParkings()
+    },
+    ...mapActions([
+      'getParkings',
+    
+    ])
+
+  },
 }
 </script>
 

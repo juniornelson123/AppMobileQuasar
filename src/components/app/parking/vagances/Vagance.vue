@@ -5,7 +5,7 @@
 		<div class="row" style="display: flex; justify-content: center;">
 			<div v-for="vagance in reserves" style="width:45%;margin-right: 5px;">
 				<div v-if="vagance.status == 'pending'" class="row"> 
-					<q-card inline style="width: 100%;background-color: #ffff00;">
+					<q-card inline style="width: 100%;background-color: #EFDC05;">
 						<q-card-title>
 						</q-card-title>
 						<q-card-main>
@@ -19,7 +19,7 @@
 					</q-card>
 				</div>
 				<div v-if="vagance.status == 'accept'">
-					<q-card inline style="width: 100%;background-color: #00ff00;">
+					<q-card inline style="width: 100%;background-color: #3ac569;">
 						<q-card-title>
 						</q-card-title>
 						<q-card-main>
@@ -32,7 +32,7 @@
 					</q-card>
 				</div>
 				<div v-if="vagance.status == 'deny' || vagance.status == 'finish'">
-					<q-card inline style="width: 100%;background-color: #ff0000;">
+					<q-card inline style="width: 100%;background-color: #c03546;">
 						<q-card-title>
 						</q-card-title>
 						<q-card-main>
