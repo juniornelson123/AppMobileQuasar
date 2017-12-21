@@ -50,7 +50,6 @@ export default {
 	getParking({dispatch, commit, state}, data){
 		commit('GETPARKING', data)
 		console.log(data)
-		console.log("enviou os dados")
 		// axios.get(consts.consts.apiHost+"/api/parkings/show_parking/"+data+".json").then(parking => {
 		// 	console.log(parking)
 			

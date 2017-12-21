@@ -57,14 +57,14 @@
 
       <q-list no-border link inset-delimiter>
         <q-list-header>Estaciona Facil</q-list-header>
-        <q-item @click="sendHome">
+        <q-side-link item to="/">
           <q-item-side icon="school" />
           <q-item-main label="Inicio" />
-        </q-item>
-        <q-item @click="sendVagance">
+        </q-side-link>
+        <q-side-link item to="/vagances">
           <q-item-side icon="local_parking" />
           <q-item-main label="Vagas" />
-        </q-item>
+        </q-side-link>
       
         <q-item @click="logout">
           <q-item-side icon="exit_to_app" />
@@ -87,6 +87,7 @@ import {
   QContextMenu,
   QItem,
   QItemSide,
+  QSideLink,
   QItemMain,
   QLayout,
   QBtn,
@@ -107,6 +108,7 @@ export default {
     QItemSide,
     QItemMain,
     QLayout,
+    QSideLink,
     QBtn,
     QIcon,
     QToolbar,
@@ -125,7 +127,7 @@ export default {
 
     sendHome(){
       this.$refs.layout.toggleLeft()
-      this.$router.push('/index')
+      this.$router.push('/')
       // console.log(this.$router)
       // this.$router.redirect('/');
     },
